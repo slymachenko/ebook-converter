@@ -7,8 +7,8 @@ fs.readdir(`./files/input/`, (err: Error, files: string[]) => {
   if (err) {
     console.error(err);
   } else {
+    if (!fs.existsSync("./files/output")) fs.mkdirSync("./files/output");
     files.forEach((file: string) => {
-      if (!fs.existsSync("./files/output")) fs.mkdirSync("./files/output");
       eBookConverter
         .convert({
           input: `../files/input/${file}`,
